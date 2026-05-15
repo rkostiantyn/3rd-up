@@ -1,0 +1,591 @@
+<!doctype html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Same DESIGN_WIDTH / MIN_WIDTH as script.js — avoids --layout-scale jumping after first paint -->
+    <script>
+      (function () {
+        var DESIGN_WIDTH = 1920;
+        var MIN_WIDTH = 1024;
+        var MIN_SCALE_NARROW = 0.8;
+        var w = window.innerWidth;
+        var ref = Math.max(w, MIN_WIDTH);
+        var scale = Math.min(1, ref / DESIGN_WIDTH);
+        if (w <= MIN_WIDTH) scale = Math.max(scale, MIN_SCALE_NARROW);
+        document.documentElement.style.setProperty("--layout-scale", String(scale));
+      })();
+    </script>
+    <title>3rd Up</title>
+    <link rel="stylesheet" href="https://unpkg.com/lenis@1.1.18/dist/lenis.css" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+
+    <header class="header">
+      <div class="container header__inner">
+        <a href="#" class="header__logo"><img src="img/logo.svg" alt="logo"></a>
+        <button
+          type="button"
+          class="header__burger"
+          aria-expanded="false"
+          aria-controls="header-drawer"
+          aria-label="Відкрити меню"
+        >
+          <span class="header__burger-line" aria-hidden="true"></span>
+          <span class="header__burger-line" aria-hidden="true"></span>
+          <span class="header__burger-line" aria-hidden="true"></span>
+        </button>
+        <div class="header__drawer" id="header-drawer">
+          <nav class="header__nav">
+            <a href="#" class="header__nav-link">Features</a>
+            <a href="#" class="header__nav-link">Solutions</a>
+            <a href="#" class="header__nav-link">Pricing</a>
+            <a href="#" class="header__nav-link">Contact us</a>
+          </nav>
+          <div class="header__actions">
+            <a href="#" class="btn btn--primary">Login</a>
+            <a href="#" class="btn btn--secondary">Start Now</a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="main">
+
+      <section class="hero">
+        <div class="container hero__inner">
+          <div class="hero__content">
+            <h1 class="hero__title">Genuine.<br />Impact.</h1>
+            <p class="hero__description">
+              3rdUp connects seamlessly with the platforms you already use. From ad networks like Adform, Google DV360, and Xandr, to app integrations with Yinzcam, and embedding across any CMS.
+            </p>
+            <a href="#" class="btn btn--hero">Get Started <img src="img/arrow-r.svg" alt="arrow right"></a>
+          </div>
+          <div class="hero__images">
+            <div class="hero__images-item hero__images-item--1" data-slot="1" tabindex="0" role="button" aria-label="Show hero image 1">
+              <div class="hero__images-item-inner">
+                <img src="img/hero/1.png" alt="hero image #1" class="hero__image hero__image--1">
+              </div>
+            </div>
+            <div class="hero__images-item hero__images-item--2" data-slot="2" tabindex="0" role="button" aria-label="Show hero image 2">
+              <div class="hero__images-item-inner">
+                <img src="img/hero/2.png" alt="hero image #2" class="hero__image hero__image--2">
+              </div>
+            </div>
+            <div class="hero__images-item hero__images-item--3" data-slot="3" tabindex="0" role="button" aria-label="Show hero image 3">
+              <div class="hero__images-item-inner">
+                <img src="img/hero/3.png" alt="hero image #3" class="hero__image hero__image--3">
+              </div>
+            </div>
+            <div class="hero__images-item hero__images-item--4" data-slot="4" tabindex="0" role="button" aria-label="Show hero image 4">
+              <div class="hero__images-item-inner">
+                <img src="img/hero/4.png" alt="hero image #4" class="hero__image hero__image--4">
+              </div>
+            </div>
+            <div class="hero__images-item hero__images-item--5" data-slot="5" tabindex="0" role="button" aria-label="Show hero image 5">
+              <div class="hero__images-item-inner">
+                <img src="img/hero/5.png" alt="hero image #5" class="hero__image hero__image--5">
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="impact">
+        <div class="container impact__inner">
+          <h2 class="impact__title">Creating impact for <img src="img/impact/1.svg" alt="impact image"></h2>
+          <div class="impact__content">
+            <div class="impact__content-item">
+              <div class="hero__images-item-placeholder">
+                <img src="img/hero/1.png" alt="impact image" class="hero__images-item-placeholder-img">
+                <img src="img/hero/1.png" alt="impact image" class="hero__images-item-placeholder-img-mobile">
+                <div class="placeholder-block">
+                  <span>Altra</span>
+                  <p>-44% Customer Acquisition Cost</p>
+                </div>  
+
+              </div>
+              <h3 class="impact__content-title">Altra</h3>
+              <div class="tags"><span>Education</span><span>Online Learning</span></div>
+            </div>
+            <div class="impact__content-item">
+              <div class="hero__images-item-placeholder">
+                <img src="img/hero/2.png" alt="impact image" class="hero__images-item-placeholder-img">
+                <img src="img/hero/2.png" alt="impact image" class="hero__images-item-placeholder-img-mobile">
+                <div class="placeholder-block">
+                  <span>Altra</span>
+                  <p>-44% Customer Acquisition Cost</p>
+                </div>
+              </div>
+              <h3 class="impact__content-title">Altra</h3>
+              <div class="tags"><span>Education</span><span>Online Learning</span></div>
+            </div>
+            <div class="impact__content-item">
+              <div class="hero__images-item-placeholder">
+                <img src="img/hero/3.png" alt="impact image" class="hero__images-item-placeholder-img">
+                <img src="img/hero/3.png" alt="impact image" class="hero__images-item-placeholder-img-mobile">
+                <div class="placeholder-block">
+                  <span>Altra</span>
+                  <p>-44% Customer Acquisition Cost</p>
+                </div>
+              </div>
+              <h3 class="impact__content-title">Altra</h3>
+              <div class="tags"><span>Education</span><span>Online Learning</span></div>
+            </div>
+            <div class="impact__content-item">
+              <div class="hero__images-item-placeholder">
+                <img src="img/hero/4.png" alt="impact image" class="hero__images-item-placeholder-img">
+                <img src="img/hero/4.png" alt="impact image" class="hero__images-item-placeholder-img-mobile">
+                <div class="placeholder-block">
+                  <span>Altra</span>
+                  <p>-44% Customer Acquisition Cost</p>
+                </div>
+              </div>
+              <h3 class="impact__content-title">Altra</h3>
+              <div class="tags"><span>Education</span><span>Online Learning</span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="scenario">
+        <div class="container scenario__inner">
+          <h2 class="scenario__undertitle">USE CASE SCENARIO</h2>
+          <h2 class="scenario__title">Video Your Way</h2>
+          <div class="scenario__wrapper">
+            <div class="scenario__item">
+              <div class="scenario__item-content">
+                <span class="item-num">01</span>
+                <div class="item-wrapper">
+                  <h3 class="item-title">Chatbot</h3>
+                  <p class="item-description">Design modern video sliders and carousels that showcase multiple videos in an engaging format.</p>
+                  <div class="item-advantages">
+                    <div class="item-advantage">
+                      <img src="img/yes.svg" alt="advantage icon">
+                      <p class="item-advantage-description">Design statement</p>
+                    </div>
+                    <div class="item-advantage">
+                      <img src="img/yes.svg" alt="advantage icon">
+                      <p class="item-advantage-description">Touch-friendly navigation</p>
+                    </div>
+                    <div class="item-advantage">
+                      <img src="img/yes.svg" alt="advantage icon">
+                      <p class="item-advantage-description">Modern carousel</p>
+                    </div>
+                    <div class="item-advantage">
+                      <img src="img/yes.svg" alt="advantage icon">
+                      <p class="item-advantage-description">Responsive design</p>
+                    </div>
+                    <a href="#" class="btn btn--secondary">Get Started</a>
+                  </div>
+                </div>
+
+              </div>
+              <div class="scenario__item-image">
+                <img src="img/scenario/1.png" alt="scenario image">
+              </div>
+            </div>
+            <div class="scenario__item">
+              <div class="scenario__item-content">
+                <span class="item-num">02</span>
+                <div class="item-wrapper">
+                  <h3 class="item-title">Chatbot</h3>
+                  <p class="item-description">Design modern video sliders and carousels that showcase multiple videos in an engaging format.</p>
+                  <div class="item-advantages">
+                    <div class="item-advantage">
+                      <img src="img/yes.svg" alt="advantage icon">
+                      <p class="item-advantage-description">Design statement</p>
+                    </div>
+                    <div class="item-advantage">
+                      <img src="img/yes.svg" alt="advantage icon">
+                      <p class="item-advantage-description">Touch-friendly navigation</p>
+                    </div>
+                    <div class="item-advantage">
+                      <img src="img/yes.svg" alt="advantage icon">
+                      <p class="item-advantage-description">Modern carousel</p>
+                    </div>
+                    <div class="item-advantage">
+                      <img src="img/yes.svg" alt="advantage icon">
+                      <p class="item-advantage-description">Responsive design</p>
+                    </div>
+                    <a href="#" class="btn btn--secondary">Get Started</a>
+                  </div>
+                </div>
+
+              </div>
+              <div class="scenario__item-image">
+                <img src="img/scenario/2.png" alt="scenario image">
+              </div>
+            </div>
+            <div class="scenario__item">
+              <div class="scenario__item-content">
+                <span class="item-num">01</span>
+                <div class="item-wrapper">
+                  <h3 class="item-title">Chatbot</h3>
+                  <p class="item-description">Design modern video sliders and carousels that showcase multiple videos in an engaging format.</p>
+                  <div class="item-advantages">
+                    <div class="item-advantage">
+                      <img src="img/yes.svg" alt="advantage icon">
+                      <p class="item-advantage-description">Design statement</p>
+                    </div>
+                    <div class="item-advantage">
+                      <img src="img/yes.svg" alt="advantage icon">
+                      <p class="item-advantage-description">Touch-friendly navigation</p>
+                    </div>
+                    <div class="item-advantage">
+                      <img src="img/yes.svg" alt="advantage icon">
+                      <p class="item-advantage-description">Modern carousel</p>
+                    </div>
+                    <div class="item-advantage">
+                      <img src="img/yes.svg" alt="advantage icon">
+                      <p class="item-advantage-description">Responsive design</p>
+                    </div>
+                    <a href="#" class="btn btn--secondary">Get Started</a>
+                  </div>
+                </div>
+
+              </div>
+              <div class="scenario__item-image">
+                <img src="img/scenario/3.png" alt="scenario image">
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="features">
+        <div class="features__inner">
+          <div class="features__item features__item--1">
+            <div class="features__item-inner">
+              <div class="features__item-content">
+                <span class="features__item-undertitle">CREATE VIDEO</span>
+                <h3 class="features__item-title">Create and setting videos right in your browser</h3>
+                <p class="features__item-description">Custom, Combine & Distribute — however you think of it, you can seamlessly join multiple clips with 3rdUp intuitive combiner. Perfect for crafting cohesive stories that captivate your audience every time.</p>
+                <a href="#" class="features__item-button">Learn More <img src="img/arrow-w.svg" alt="arrow white"></a>
+              </div>
+              <div class="features__item-image">
+                <img src="img/features/1.png" alt="features image">
+              </div>
+            </div>
+          </div>
+          <div class="features__item features__item--2">
+            <div class="features__item-inner">
+              <div class="features__item-content">
+                <span class="features__item-undertitle">CREATE VIDEO</span>
+                <h3 class="features__item-title">Create and setting videos right in your browser</h3>
+                <p class="features__item-description">Custom, Combine & Distribute — however you think of it, you can seamlessly join multiple clips with 3rdUp intuitive combiner. Perfect for crafting cohesive stories that captivate your audience every time.</p>
+                <a href="#" class="features__item-button">Learn More <img src="img/arrow-w.svg" alt="arrow white"></a>
+              </div>
+              <div class="features__item-image">
+                <img src="img/features/2.png" alt="features image">
+              </div>
+            </div>
+          </div>
+          <div class="features__item features__item--3">
+            <div class="features__item-inner">
+              <div class="features__item-content">
+                <span class="features__item-undertitle">CREATE VIDEO</span>
+                <h3 class="features__item-title">Create and setting videos right in your browser</h3>
+                <p class="features__item-description">Custom, Combine & Distribute — however you think of it, you can seamlessly join multiple clips with 3rdUp intuitive combiner. Perfect for crafting cohesive stories that captivate your audience every time.</p>
+                <a href="#" class="features__item-button">Learn More <img src="img/arrow-w.svg" alt="arrow white"></a>
+              </div>
+              <div class="features__item-image">
+                <img src="img/features/3.png" alt="features image">
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="solutions">
+        <div class="container solutions__inner">
+          <h2 class="solutions__title">A video solution perfect <br> for everyone</h2>
+          <p class="solutions__description">3rdUp delivers reliable streaming, brand control, and rich analytics give audiences what they expect and your team the confidence they need.</p>
+
+          <div
+            class="solutions__viewport"
+            role="region"
+            aria-roledescription="carousel"
+            aria-label="Video solutions"
+            tabindex="0"
+          >
+            <div class="solutions__track">
+              <div class="solutions__item">
+                <div class="solutions__item-image">
+                  <img src="img/solutions/1.png" alt="" draggable="false">
+                </div>
+                <div class="solutions__item-content">
+                  <img src="img/solutions/icon2.svg" alt="" draggable="false">
+                  <h3 class="solutions__item-title">Video Pros</h3>
+                  <p class="solutions__item-description">Monitor your cash position in real-time with automated...</p>
+                </div>
+              </div>
+              <div class="solutions__item">
+                <div class="solutions__item-image">
+                  <img src="img/solutions/2.png" alt="" draggable="false">
+                </div>
+                <div class="solutions__item-content">
+                  <img src="img/solutions/icon1.svg" alt="" draggable="false">
+                  <h3 class="solutions__item-title">Marketing Teams</h3>
+                  <p class="solutions__item-description">Monitor your cash position in real-time with automated...</p>
+                </div>
+              </div>
+              <div class="solutions__item">
+                <div class="solutions__item-image">
+                  <img src="img/solutions/2.png" alt="" draggable="false">
+                </div>
+                <div class="solutions__item-content">
+                  <img src="img/solutions/icon2.svg" alt="" draggable="false">
+                  <h3 class="solutions__item-title">Video Pros</h3>
+                  <p class="solutions__item-description">Monitor your cash position in real-time with automated...</p>
+                </div>
+              </div>
+              <div class="solutions__item">
+                <div class="solutions__item-image">
+                  <img src="img/solutions/1.png" alt="" draggable="false">
+                </div>
+                <div class="solutions__item-content">
+                  <img src="img/solutions/icon1.svg" alt="" draggable="false">
+                  <h3 class="solutions__item-title">Marketing Teams</h3>
+                  <p class="solutions__item-description">Monitor your cash position in real-time with automated...</p>
+                </div>
+              </div>
+              <div class="solutions__item">
+                <div class="solutions__item-image">
+                  <img src="img/solutions/1.png" alt="" draggable="false">
+                </div>
+                <div class="solutions__item-content">
+                  <img src="img/solutions/icon1.svg" alt="" draggable="false">
+                  <h3 class="solutions__item-title">Video Pros</h3>
+                  <p class="solutions__item-description">Monitor your cash position in real-time with automated...</p>
+                </div>
+              </div>
+              <div class="solutions__item">
+                <div class="solutions__item-image">
+                  <img src="img/solutions/2.png" alt="" draggable="false">
+                </div>
+                <div class="solutions__item-content">
+                  <img src="img/solutions/icon1.svg" alt="" draggable="false">
+                  <h3 class="solutions__item-title">Video Pros</h3>
+                  <p class="solutions__item-description">Monitor your cash position in real-time with automated...</p>
+                </div>
+              </div>
+              <div class="solutions__item">
+                <div class="solutions__item-image">
+                  <img src="img/solutions/2.png" alt="" draggable="false">
+                </div>
+                <div class="solutions__item-content">
+                  <img src="img/solutions/icon1.svg" alt="" draggable="false">
+                  <h3 class="solutions__item-title">Marketing Teams</h3>
+                  <p class="solutions__item-description">Monitor your cash position in real-time with automated...</p>
+                </div>
+              </div>
+              <div class="solutions__item">
+                <div class="solutions__item-image">
+                  <img src="img/solutions/1.png" alt="" draggable="false">
+                </div>
+                <div class="solutions__item-content">
+                  <img src="img/solutions/icon1.svg" alt="" draggable="false">
+                  <h3 class="solutions__item-title">Video Pros</h3>
+                  <p class="solutions__item-description">Monitor your cash position in real-time with automated...</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+        </div>
+      </section>
+
+      <section class="blog">
+        <div class="container blog__inner">
+          <span class="blog__undertitle">Blog</span>
+          <h2 class="blog__title">Insights by 3rdUp Teams</h2>
+          <p class="blog__description">Insights that drive impact—rooted in research, supported by data, and made to fuel brand growth.</p>
+          <div class="blog__wrapper">
+            <a href="#" class="blog__item">
+              <div class="blog__item-image">
+                <img src="img/solutions/1.png" alt="blog image">
+              </div>
+              <div class="blog__item-content">
+                <div class="tags"><span>Education</span><span>Online Learning</span></div>
+                <span class="blog__item-date">2026-05-15</span>
+              </div>
+              <h3 class="blog__item-title">What the Rakuten-Impact Alliance Means for
+                the Affiliate Industry & Brands</h3>
+            </a>
+            <a href="#" class="blog__item">
+              <div class="blog__item-image">
+                <img src="img/solutions/1.png" alt="blog image">
+              </div>
+              <div class="blog__item-content">
+                <div class="tags"><span>Education</span><span>Online Learning</span></div>
+                <span class="blog__item-date">2026-05-15</span>
+              </div>
+              <h3 class="blog__item-title">What the Rakuten-Impact Alliance Means for
+                the Affiliate Industry & Brands</h3>
+            </a>
+            <a href="#" class="blog__item">
+              <div class="blog__item-image">
+                <img src="img/solutions/1.png" alt="blog image">
+              </div>
+              <div class="blog__item-content">
+                <div class="tags"><span>Education</span><span>Online Learning</span></div>
+                <span class="blog__item-date">2026-05-15</span>
+              </div>
+              <h3 class="blog__item-title">What the Rakuten-Impact Alliance Means for
+                the Affiliate Industry & Brands</h3>
+            </a>
+          </div>
+          <a href="#" class="blog__button">View All <img src="img/arrow-r.svg" alt="arrow white"></a>
+        </div>
+      </section>
+
+      <section class="faq">
+        <div class="container faq__inner">
+          <div class="faq__col">
+            <h2 class="faq__undertitle">FAQ’s</h2>
+            <h2 class="faq__title">Frequently asked questions</h2>
+          </div>
+          <div class="faq__wrapper">
+            <div class="faq__item">
+              <button type="button" class="faq__item-title" id="faq-trigger-1" aria-expanded="false" aria-controls="faq-panel-1">
+                What is 3rdUp? <span class="direction" aria-hidden="true"></span>
+              </button>
+              <div class="faq__item-content" id="faq-panel-1" role="region" aria-labelledby="faq-trigger-1">
+                <p class="faq__item-text">3rdUp is a subscription-based design service that gives your team unlimited access to senior designers. We handle everything from UI/UX to brand — fast, asynchronously, with no hiring hassle.3rdUp is a subscription-based design service that gives your team unlimited access to senior designers. We handle everything from UI/UX to brand — fast, asynchronously, with no hiring hassle.</p>
+              </div>
+            </div>
+            <div class="faq__item">
+              <button type="button" class="faq__item-title" id="faq-trigger-2" aria-expanded="false" aria-controls="faq-panel-2">
+                How does the subscription model work? <span class="direction" aria-hidden="true"></span>
+              </button>
+              <div class="faq__item-content" id="faq-panel-2" role="region" aria-labelledby="faq-trigger-2">
+                <p class="faq__item-text">You subscribe to a monthly plan, submit design requests via your dedicated board, and we work through them one at a time — delivering production-ready files, usually within 1–3 business days per task.</p>
+              </div>
+            </div>
+            <div class="faq__item">
+              <button type="button" class="faq__item-title" id="faq-trigger-3" aria-expanded="false" aria-controls="faq-panel-3">
+                What types of design work can I request? <span class="direction" aria-hidden="true"></span>
+              </button>
+              <div class="faq__item-content" id="faq-panel-3" role="region" aria-labelledby="faq-trigger-3">
+                <p class="faq__item-text">Almost anything — UI screens, landing pages, email templates, social graphics, pitch decks, brand identity, illustrations, and more. If it's design, we can handle it.</p>
+              </div>
+            </div>
+            <div class="faq__item">
+              <button type="button" class="faq__item-title" id="faq-trigger-4" aria-expanded="false" aria-controls="faq-panel-4">
+                How fast will I receive my designs? <span class="direction" aria-hidden="true"></span>
+              </button>
+              <div class="faq__item-content" id="faq-panel-4" role="region" aria-labelledby="faq-trigger-4">
+                <p class="faq__item-text">Most requests are completed within 1–3 business days. Larger or more complex tasks may take longer, but we'll always give you a clear timeline upfront so you're never left guessing.</p>
+              </div>
+            </div>
+            <div class="faq__item">
+              <button type="button" class="faq__item-title" id="faq-trigger-5" aria-expanded="false" aria-controls="faq-panel-5">
+                Can I pause or cancel my subscription? <span class="direction" aria-hidden="true"></span>
+              </button>
+              <div class="faq__item-content" id="faq-panel-5" role="region" aria-labelledby="faq-trigger-5">
+                <p class="faq__item-text">Yes. You can pause or cancel any time — no lock-in, no penalties. Pausing lets you bank your remaining days and resume when you need us again.</p>
+              </div>
+            </div>
+            <div class="faq__item">
+              <button type="button" class="faq__item-title" id="faq-trigger-6" aria-expanded="false" aria-controls="faq-panel-6">
+                How many design requests can I have at once? <span class="direction" aria-hidden="true"></span>
+              </button>
+              <div class="faq__item-content" id="faq-panel-6" role="region" aria-labelledby="faq-trigger-6">
+                <p class="faq__item-text">We work through one active request at a time per subscription. You can queue as many requests as you like — we'll tackle them in priority order, turning around each one swiftly.</p>
+              </div>
+            </div>
+            <div class="faq__item">
+              <button type="button" class="faq__item-title" id="faq-trigger-7" aria-expanded="false" aria-controls="faq-panel-7">
+                What tools and formats do you work in? <span class="direction" aria-hidden="true"></span>
+              </button>
+              <div class="faq__item-content" id="faq-panel-7" role="region" aria-labelledby="faq-trigger-7">
+                <p class="faq__item-text">We primarily work in Figma and deliver organised, developer-ready files. We can also export to any format you need — PNG, SVG, PDF, and more.</p>
+              </div>
+            </div>
+            <div class="faq__item">
+              <button type="button" class="faq__item-title" id="faq-trigger-8" aria-expanded="false" aria-controls="faq-panel-8">
+                Is there a trial or money-back guarantee? <span class="direction" aria-hidden="true"></span>
+              </button>
+              <div class="faq__item-content" id="faq-panel-8" role="region" aria-labelledby="faq-trigger-8">
+                <p class="faq__item-text">We offer a 7-day money-back guarantee on your first month — no questions asked. If you're not completely satisfied with the quality of work, we'll refund you in full.</p>
+              </div>
+            </div>
+            <div class="faq__item">
+              <button type="button" class="faq__item-title" id="faq-trigger-9" aria-expanded="false" aria-controls="faq-panel-9">
+                Who will be working on my designs? <span class="direction" aria-hidden="true"></span>
+              </button>
+              <div class="faq__item-content" id="faq-panel-9" role="region" aria-labelledby="faq-trigger-9">
+                <p class="faq__item-text">Your designs are handled by senior designers with 5+ years of product and brand experience. You'll work with the same dedicated designer throughout your subscription for consistency.</p>
+              </div>
+            </div>
+            <div class="faq__item">
+              <button type="button" class="faq__item-title" id="faq-trigger-10" aria-expanded="false" aria-controls="faq-panel-10">
+                I'm not sure which plan fits my needs. <span class="direction" aria-hidden="true"></span>
+              </button>
+              <div class="faq__item-content" id="faq-panel-10" role="region" aria-labelledby="faq-trigger-10">
+                <p class="faq__item-text">No problem — book a free 20-minute call with us and we'll recommend the right plan based on your team's design volume, velocity, and goals. Let's find the best fit together.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="footer__grid">
+
+        <div class="footer__panel footer__panel--brand">
+          <a href="#" class="footer__logo"><img src="img/logo-footer.svg" alt="logo"></a>
+          <div class="footer__list">
+            <h3 class="footer__list-title">Stay Connected</h3>
+            <a href="#" class="footer__list-item">Instagram</a>
+            <a href="#" class="footer__list-item">LinkedIn</a>
+          </div>
+        </div>
+
+        <div class="footer__panel footer__panel--newsletter">
+          <h3 class="footer__title">Stay up to date with all things 3rdUp</h3>
+          <form action="#" class="footer__form">
+            <input type="text" required placeholder="First Name*" class="footer__form-input">
+            <input type="email" required placeholder="Email*" class="footer__form-input">
+            <button type="submit" class="btn btn--secondary footer__form-button"><span class="btn__text">Subscribe</span><img src="img/arrow-w.svg" alt="arrow white"></button>
+          </form>
+        </div>
+
+        <div class="footer__panel footer__panel--nav">
+          <div class="footer__list">
+            <h3 class="footer__list-title">More Info</h3>
+            <a href="#" class="footer__list-item">Process</a>
+            <a href="#" class="footer__list-item">Team</a>
+            <a href="#" class="footer__list-item">Offerings</a>
+            <a href="#" class="footer__list-item">3rdUp AI</a>
+          </div>
+          <div class="footer__list">
+            <h3 class="footer__list-title">Say Hello</h3>
+            <a href="#" class="footer__list-item">hello@3rdup.com</a>
+          </div>
+          <div class="footer__list">
+            <h3 class="footer__list-title">Free Downloads</h3>
+            <a href="#" class="footer__list-item">Year Marketing Calender</a>
+            <a href="#" class="footer__list-item">Phone Sales Course</a>
+          </div>
+          <div class="footer__cta">
+            <div class="footer__cta-title">try free demo</div>
+            <a href="#" class="footer__cta-button">Book a Call <img src="img/arrow-w.svg" alt="arrow white"></a>
+          </div>
+        </div>
+        
+
+        <div class="footer__panel footer__panel--legal">
+          <a href="#" class="footer__legal-link">Terms and Privacy</a>
+          <div class="footer__legal-copyright">Copyright 3drd-up System 2026</div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
+    <script src="./script.js"></script>
+  </body>
+</html>
