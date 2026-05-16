@@ -11,6 +11,12 @@ $hero-card-radius: 12 !default;
 $hero-card-border-w: 2 !default;
 $hero-card-border-color: rgba(255, 255, 255, 0.55) !default;
 
+// Stacking: hero→impact clones < impact hover overlay < header < drawer (overlay must stay < header).
+$z-flight-layer: 90;
+$z-impact-placeholder-overlay: 95;
+$z-header: 100;
+$z-header-drawer: 101;
+
 /// Shared card chrome: hero, flight clone, placeholder.
 @mixin hero-card-frame {
   box-sizing: border-box;
@@ -318,7 +324,7 @@ p {
   left: 0;
   right: 0;
   width: 100%;
-  z-index: 100;
+  z-index: $z-header;
   background-color: transparent;
   transition: background-color 0s ease;
   min-height: scaled($layout-header-height);
@@ -507,7 +513,7 @@ p {
       transform: none;
       box-sizing: border-box;
       height: 100dvh;
-      z-index: 101;
+      z-index: $z-header-drawer;
       flex-direction: column;
       align-items: stretch;
       padding: scaled(16) scaled(24) scaled(24);
@@ -902,6 +908,14 @@ p {
               height: scaled(492);
               flex-shrink: 0;
 
+              &::after {
+                content: "";
+                position: absolute;
+                inset: 0;
+                z-index: 2;
+                pointer-events: auto;
+              }
+
               .hero__images-item-placeholder-img,
               .hero__images-item-placeholder-img-mobile {
                 position: absolute;
@@ -957,7 +971,7 @@ p {
                 left: 0;
                 right: 0;
                 width: 100%;
-                z-index: 1;
+                z-index: $z-impact-placeholder-overlay;
                 padding: scaled(20);
                 box-sizing: border-box;
                 display: flex;
@@ -2324,7 +2338,7 @@ font-weight: 400;
   position: fixed;
   inset: 0;
   pointer-events: none;
-  z-index: 90;
+  z-index: $z-flight-layer;
   contain: strict;
 
   // Match hero fan z-stack (clone DOM order ≠ visual stack).
@@ -2355,6 +2369,7 @@ font-weight: 400;
   top: 0;
   left: 0;
   will-change: left, top, width, height, opacity;
+  pointer-events: none;
 
   img {
     width: 100%;
@@ -2362,6 +2377,7 @@ font-weight: 400;
     object-fit: cover;
     display: block;
     transform: scale(1.02);
+    pointer-events: none;
   }
 }
 
@@ -2379,7 +2395,8 @@ font-weight: 400;
     border-color: transparent;
   }
 
-  .hero__images-item-placeholder .hero__images-item-placeholder-img {
+  .hero__images-item-placeholder .hero__images-item-placeholder-img,
+  .hero__images-item-placeholder .hero__images-item-placeholder-img-mobile {
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
