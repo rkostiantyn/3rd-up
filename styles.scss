@@ -1046,18 +1046,20 @@ p {
       @include page-container;
       padding-top: scaled(160);
       display: flex;
-
       flex-direction: column;
-      align-items: center;
+      align-items: stretch;
       justify-content: center;
       gap: scaled(36);
 
       @media (max-width: 768px) {
         padding-top: scaled(80);
         gap: scaled(24);
+        align-items: center;
       }
     }
     &__undertitle {
+      align-self: center;
+      text-align: center;
         font-family: var(--font-heading);
         font-weight: 900;
         font-size: scaled(16);
@@ -1069,6 +1071,8 @@ p {
         -webkit-text-fill-color: transparent;
     }
     &__title {
+        align-self: center;
+        text-align: center;
         font-family: var(--font-heading);
         font-weight: 700;
         font-style: Bold;
@@ -1081,13 +1085,30 @@ p {
           font-size: scaled(48);
         }
     }
+  // Full viewport row; padding-left = same X as .container content (incl. ultra-wide).
     &__wrapper {
+        position: relative;
         display: flex;
         flex-direction: column;
         align-items: stretch;
         justify-content: center;
         margin-top: scaled(60);
         width: 100%;
+        min-width: 0;
+
+        @media (min-width: 769px) {
+          --scenario-row-inset: calc(#{scaled(48)} + max(0px, (100vw - #{scaled(48)} * 2 - #{$layout-design-width}px) / 2));
+          width: 100vw;
+          margin-left: calc(50% - 50vw);
+          margin-right: calc(50% - 50vw);
+          padding-left: var(--scenario-row-inset);
+          padding-right: 0;
+          box-sizing: border-box;
+        }
+
+        @media (max-width: 768px) {
+          --scenario-row-inset: #{scaled(24)};
+        }
     }
     &__item {
         position: relative;
@@ -1098,6 +1119,23 @@ p {
         gap: scaled(24);
         width: 100%;
         min-width: 0;
+        overflow: hidden;
+        background: #000000;
+
+        @media (min-width: 769px) {
+            overflow: visible;
+            position: sticky;
+            top: scaled($layout-header-height);
+            min-height: calc(100dvh - #{scaled($layout-header-height)});
+        }
+
+        @for $i from 1 through 6 {
+            &:nth-child(#{$i}) {
+                @media (min-width: 769px) {
+                    z-index: $i;
+                }
+            }
+        }
 
         @media (max-width: 768px) {
             flex-direction: column;
@@ -1105,17 +1143,18 @@ p {
             align-items: stretch;
             padding-bottom: scaled(80);
             padding-top: scaled(80);
+            position: relative;
+            top: auto;
+            min-height: auto;
+            z-index: auto;
         }
         &::before {
             content: '';
             display: block;
             position: absolute;
             top: 0;
-            // Avoid 100vw horizontal overflow (::before full-bleed).
-            left: 0;
-            right: 0;
-            width: auto;
-            transform: none;
+            left: calc(-1 * var(--scenario-row-inset, #{scaled(48)}));
+            width: 100vw;
             height: scaled(1);
             z-index: 10;
             pointer-events: none;
@@ -1207,26 +1246,44 @@ p {
             align-self: center;
             margin-left: auto;
             margin-right: 0;
-            // Same overflow rationale as ::before (no vw bleed).
-            width: min(#{scaled(840)}, 100%);
-            max-width: min(#{scaled(840)}, 100%);
-            aspect-ratio: 1 / 1;
+            width: auto;
             height: auto;
-            overflow: hidden;
+            max-width: min(#{scaled(840)}, 100%);
+            max-height: calc(100dvh - #{scaled($layout-header-height)} - #{scaled(80)});
+            overflow: visible;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+
+            @media (min-width: 769px) {
+                flex-shrink: 0;
+                max-width: min(#{scaled(840)}, calc(100% - #{scaled(620)} - #{scaled(24)}));
+            }
 
             @media (max-width: 768px) {
-                align-self: stretch;
-                margin-left: 0;
-                margin-right: 0;
+                align-self: center;
+                justify-content: center;
+                margin-left: auto;
+                margin-right: auto;
                 width: 100%;
                 max-width: 100%;
+                max-height: none;
             }
 
             img {
-                width: 100%;
-                height: 100%;
-                max-width: none;
-                object-fit: cover;
+                display: block;
+                width: auto;
+                height: auto;
+                max-width: 100%;
+                max-height: calc(100dvh - #{scaled($layout-header-height)} - #{scaled(80)});
+                object-fit: contain;
+                object-position: center right;
+
+                @media (max-width: 768px) {
+                    max-width: 100%;
+                    max-height: none;
+                    object-position: center;
+                }
             }
         }
     }
